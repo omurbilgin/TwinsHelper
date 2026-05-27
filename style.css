@@ -1,0 +1,134 @@
+#twins-helper-panel {
+    position: fixed;
+    top: 120px;
+    right: 24px;
+    width: 320px;
+    z-index: 999999;
+    background: #ffffff;
+    border: 1px solid #d8dee9;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.18);
+    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+}
+
+#twins-helper-panel.is-collapsed .twins-helper-body {
+    display: none;
+}
+
+#twins-helper-panel.is-collapsed .twins-helper-footer {
+    display: none;
+}
+
+.twins-helper-header {
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 0 10px 0 14px;
+    background: #f99f2b;
+    color: #ffffff;
+    cursor: move;
+    user-select: none;
+}
+
+.twins-helper-title {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.twins-helper-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.twins-helper-icon-btn {
+    width: 26px;
+    height: 26px;
+    border: 0;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 26px;
+    text-align: center;
+    padding: 0;
+}
+
+.twins-helper-icon-btn:hover {
+    background: rgba(255, 255, 255, 0.28);
+}
+
+.twins-helper-body {
+    padding: 12px;
+    color: #1f2937;
+    font-size: 13px;
+}
+
+.twins-helper-textarea {
+    display: block;
+    width: 100%;
+    min-height: 74px;
+    margin: 0 0 10px;
+    padding: 8px 10px;
+    border: 1px solid #d8dee9;
+    border-radius: 6px;
+    color: #1f2937;
+    background: #ffffff;
+    font: inherit;
+    line-height: 1.4;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+.twins-helper-textarea:focus {
+    outline: none;
+    border-color: #f99f2b;
+    box-shadow: 0 0 0 2px rgba(249, 159, 43, 0.18);
+}
+
+.twins-helper-checkbox-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 12px;
+}
+
+.twins-helper-checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+    color: #1f2937;
+    font-size: 13px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.twins-helper-checkbox-label input {
+    margin: 0;
+}
+
+.twins-helper-footer {
+    padding: 0 12px 12px;
+}
+
+.twins-helper-update-btn {
+    width: 100%;
+    min-height: 34px;
+    border: 0;
+    border-radius: 6px;
+    background: #f99f2b;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.twins-helper-update-btn:hover {
+    background: #e88e1f;
+}
