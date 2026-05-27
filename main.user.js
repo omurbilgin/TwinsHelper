@@ -6,7 +6,7 @@
 // @author       ...
 // @match        Paste the Twins URL here.
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=visualstudio.com
-// @resource     twinsHelperStyle https://cdn.jsdelivr.net/gh/omurbilgin/TwinsHelper@main/style.css
+// @resource     twinsHelperStyle https://cdn.jsdelivr.net/gh/omurbilgin/TwinsHelper@latest/style.css
 // @grant        GM_addStyle
 // @grant        GM_getResourceText
 // ==/UserScript==
