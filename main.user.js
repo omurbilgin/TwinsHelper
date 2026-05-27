@@ -3,21 +3,16 @@
 // @namespace    gh
 // @version      v01
 // @description  Helper script for Twins
-// @author       You
-// @match        http://10.237.5.169/dashboard
+// @author       ...
+// @match        Paste the Twins URL here.
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=visualstudio.com
-// @resource     twinsHelperStyle file:///C:/Users/omur.bilgin/Documents/GitHub/TwinsHelper/style.css
+// @resource     twinsHelperStyle https://cdn.jsdelivr.net/gh/omurbilgin/TwinsHelper@main/style.css
 // @grant        GM_addStyle
 // @grant        GM_getResourceText
 // ==/UserScript==
 
 (function() {
     'use strict';
-
-    const helperState = {
-        baseSubject: '',
-        lastSubject: ''
-    };
 
     function loadTwinsHelperStyle() {
         const css = GM_getResourceText('twinsHelperStyle');
@@ -135,6 +130,9 @@
         updateSubject(customerName, warningText, hostname);
         updateEditorTableCell('Uyari', warningText);
         updateEditorTableCell('Hostname', hostname);
+        updateEditorIntroText();
+        removeEditorTableRow('Date');
+        addRegardsAfterTable();
         syncEditorCopy();
         alert('Mail Updated!');
     }
@@ -159,8 +157,6 @@
         }
 
         subjectValue += " - Uyarısı Hk.";
-
-        console.log(subjectValue);
 
         subjectInput.value = subjectValue.replace(/\n/g, ' & ');
         subjectInput.dispatchEvent(new Event('input', { bubbles: true }));
@@ -197,6 +193,50 @@
 
         valueCell.innerHTML = '';
         valueCell.innerHTML = value.replace(/\n/g, '<br>');
+    }
+
+    function removeEditorTableRow(labelText) {
+        const editor = document.getElementById('editor');
+
+        if (!editor) {
+            return;
+        }
+
+        const labelCell = Array.from(editor.querySelectorAll('td')).find(function (cell) {
+            return normalizeText(cell.textContent) === normalizeText(labelText);
+        });
+
+        const row = labelCell?.closest('tr');
+
+        if (row) {
+            row.remove();
+        }
+    }
+
+    function addRegardsAfterTable() {
+        const editor = document.getElementById('editor');
+
+        if (!editor || editor.textContent.includes('Saygılarımla,')) {
+            return;
+        }
+
+        editor.innerHTML = editor.innerHTML.replace(
+            /<\/table>(?:\s|<br\s*\/?>)*/i,
+            '</table><br>Saygılarımla,<br><br>'
+        );
+    }
+
+    function updateEditorIntroText() {
+        const editor = document.getElementById('editor');
+
+        if (!editor) {
+            return;
+        }
+
+        editor.innerHTML = editor.innerHTML.replace(
+            /Sistem\s+üzerinden\s+"[^"]*"\s+uyarısı\s+alınmaktadır\.\s*Kontrol\s+edebilir\s+misiniz\?(?:\s*<br\s*\/?>){0,4}/i,
+            'Sistem üzerinden tablodaki uyarı alınmaktadır.<br>Kontrol edebilir misiniz?<br><br>'
+        );
     }
 
     function normalizeText(text) {
